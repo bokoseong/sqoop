@@ -140,7 +140,7 @@ public class GenericJdbcToInitializer extends Initializer<LinkConfiguration, ToJ
       builder.append("INSERT INTO ");
       builder.append(fullTableName);
       builder.append(" (");
-      builder.append(tableColumns);
+      builder.append(StringUtils.join(tableColumns, ","));
       builder.append(") VALUES (?");
       for (int i = 1; i < tableColumns.size(); i++) {
         builder.append(",?");
