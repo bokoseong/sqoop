@@ -21,6 +21,7 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.fail;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.sqoop.common.MutableContext;
 import org.apache.sqoop.common.MutableMapContext;
 import org.apache.sqoop.common.SqoopException;
@@ -122,7 +123,7 @@ public class TestToInitializer {
     Initializer initializer = new GenericJdbcToInitializer();
     initializer.initialize(initializerContext, linkConfig, jobConfig);
 
-    verifyResult(context, "INSERT INTO " + fullTableName + " (" + tableColumns + ") VALUES (?,?)");
+    verifyResult(context, "INSERT INTO " + fullTableName + " (" + StringUtils.join(tableColumns, ",") + ") VALUES (?,?)");
   }
 
   @Test
