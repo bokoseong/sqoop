@@ -170,7 +170,7 @@ public class TestToInitializer {
     Initializer initializer = new GenericJdbcToInitializer();
     initializer.initialize(initializerContext, linkConfig, jobConfig);
 
-    verifyResult(context, "INSERT INTO " + fullTableName + " (" + tableColumns + ") VALUES (?,?)");
+    verifyResult(context, "INSERT INTO " + fullTableName + " (" + StringUtils.join(tableColumns, ",") + ") VALUES (?,?)");
   }
 
   private void verifyResult(MutableContext context, String dataSql) {
